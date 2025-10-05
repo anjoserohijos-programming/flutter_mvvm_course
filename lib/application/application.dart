@@ -1,17 +1,23 @@
+// ignore_for_file: prefer_const_constructors_in_immutables
+
 import 'package:flutter/material.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+// ignore: must_be_immutable
+class MyApp extends StatefulWidget {
+  MyApp._internal();
+
+  static final MyApp instance = MyApp._internal();
+  factory MyApp() => instance;
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const Scaffold(),
+    return Scaffold(
+      body: Container(),
     );
   }
 }
